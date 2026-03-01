@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — Avyro.ai</title>
-  <meta name="description" content="Avyro.ai Privacy Policy — how we collect, use, and protect your data." />
+  <meta name="description" content="Avyro.ai Privacy Policy — how we collect, use, and protect your data. GDPR compliant." />
   <meta property="og:title" content="Privacy Policy — Avyro.ai" />
   <meta property="og:description" content="How Avyro.ai collects, uses, and protects your data." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://avyro.app/privacy" />
+  <meta name="twitter:card" content="summary" />
   <meta name="theme-color" content="#07090F" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -224,157 +225,267 @@
       <p class="last-updated">Last updated: March 2026</p>
     </div>
 
+    <!-- 1. Introduction -->
     <div class="section">
       <h2 class="section-title">1. Introduction</h2>
       <p>
-        Avyro.ai ("we", "our", "us") is an AI-powered fitness coaching application. We are committed
-        to protecting your privacy and handling your personal data responsibly. This Privacy Policy
-        explains what data we collect, how we use it, and your rights regarding that data.
+        Avyro.ai ("we", "our", "us") is an AI-powered fitness coaching application operated from Norway.
+        We are committed to protecting your privacy and handling your personal data in accordance with
+        the General Data Protection Regulation (GDPR) and applicable Norwegian data protection law.
       </p>
       <p>
-        By using Avyro.ai, you agree to the collection and use of information as described in this policy.
+        This Privacy Policy explains what personal data we collect, the purposes for which we process it,
+        who we share it with, and the rights you have in relation to your data. By creating an account
+        and using Avyro.ai, you acknowledge the practices described in this policy.
       </p>
     </div>
 
+    <!-- 2. Information We Collect -->
     <div class="section">
-      <h2 class="section-title">2. Data We Collect</h2>
-      <p>We collect the following categories of personal data:</p>
+      <h2 class="section-title">2. Information We Collect</h2>
+      <p>We collect the following categories of personal data when you use Avyro.ai:</p>
+
+      <p><strong>Account information</strong></p>
       <ul>
-        <li><strong>Account information:</strong> Name, email address</li>
-        <li><strong>Health and biometric data:</strong> Heart rate variability (HRV), sleep duration and quality, resting heart rate, daily step count, and recovery metrics — sourced from Apple HealthKit, Google Health Connect, Garmin, and Oura</li>
-        <li><strong>Workout data:</strong> Exercise logs, sets, reps, weights, session duration, and workout history</li>
-        <li><strong>Location data:</strong> Approximate location used for displaying nearby training groups on the map</li>
-        <li><strong>Chat messages:</strong> Conversations with the AI coach and messages sent in group chats</li>
-        <li><strong>Photos:</strong> Images you choose to share in group chats</li>
+        <li>Your name and email address, provided when you create an account</li>
+      </ul>
+
+      <p><strong>Fitness and health data</strong></p>
+      <ul>
+        <li>Heart rate variability (HRV), sleep duration and quality, and resting heart rate sourced from connected wearables and health platforms</li>
+        <li>Workout history including exercises, sets, reps, weights, and session duration</li>
+      </ul>
+
+      <p><strong>AI coaching conversations</strong></p>
+      <ul>
+        <li>Messages you send to and receive from the AI coach, stored to maintain conversation context and improve your coaching experience</li>
+      </ul>
+
+      <p><strong>Location data</strong></p>
+      <ul>
+        <li>City-level approximate location used for weather context, timezone adjustments, and AI coaching personalisation. We do not collect precise GPS coordinates.</li>
+      </ul>
+
+      <p><strong>Device and usage data</strong></p>
+      <ul>
+        <li>Device type, operating system version, and crash logs collected via Sentry for stability and bug-fixing purposes</li>
+        <li>In-app usage patterns collected through our own custom analytics system (we do not use third-party tracking services such as Google Analytics)</li>
       </ul>
     </div>
 
+    <!-- 3. How We Use Your Information -->
     <div class="section">
-      <h2 class="section-title">3. How We Use Your Data</h2>
-      <p>Your data is used for the following purposes:</p>
+      <h2 class="section-title">3. How We Use Your Information</h2>
+      <p>We process your personal data for the following purposes:</p>
       <ul>
-        <li><strong>Personalised training:</strong> Your health and biometric data is used to generate and adapt your AI-coached training program in real time</li>
-        <li><strong>AI coaching:</strong> Chat messages and biometric context are sent to our AI provider to generate personalised coaching responses</li>
-        <li><strong>Group features:</strong> Your name, streak, and shared messages/photos are visible to members of groups you join</li>
-        <li><strong>Location features:</strong> Your approximate location is used to display nearby training groups on the map and to contextualise AI coaching advice</li>
-        <li><strong>Progress tracking:</strong> Workout logs and streak data are stored to show your training history and achievements</li>
+        <li><strong>Personalised coaching:</strong> Your health metrics, workout history, and chat messages are used to generate and adapt your AI training programme in real time</li>
+        <li><strong>AI response generation:</strong> Your chat messages and relevant biometric context are sent to our AI provider (Anthropic) to produce coaching responses tailored to your current physical state</li>
+        <li><strong>Progress tracking:</strong> Workout logs, streaks, and health trends are stored so you can review your training history and achievements</li>
+        <li><strong>Notifications:</strong> With your consent, we send push notifications via Expo Notifications to remind you of workouts, share readiness updates, or deliver coaching messages</li>
+        <li><strong>App stability:</strong> Crash reports and device information are used to identify and fix bugs, ensuring a reliable experience</li>
+        <li><strong>Service improvement:</strong> Aggregated, anonymised usage data helps us understand how features are used and where improvements are needed</li>
       </ul>
     </div>
 
+    <!-- 4. Data Storage & Security -->
     <div class="section">
-      <h2 class="section-title">4. Data Storage and Security</h2>
+      <h2 class="section-title">4. Data Storage &amp; Security</h2>
       <p>
-        Your data is stored securely using <strong>Supabase</strong> (hosted on AWS infrastructure). All data
-        is encrypted at rest and in transit using industry-standard TLS encryption.
+        Your data is stored in a <strong>Supabase</strong>-hosted PostgreSQL database running on secure
+        cloud infrastructure. All data is encrypted at rest and in transit using industry-standard
+        TLS/SSL encryption.
       </p>
+      <p>
+        We implement appropriate technical and organisational measures to protect your personal data
+        against unauthorised access, alteration, disclosure, or destruction. These measures include
+        access controls, encrypted backups, and regular security reviews.
+      </p>
+      <p>
+        While we take every reasonable precaution, no method of electronic storage or transmission is
+        100% secure. If you become aware of any security incident, please contact us immediately at
+        <a href="mailto:privacy@avyro.app">privacy@avyro.app</a>.
+      </p>
+    </div>
+
+    <!-- 5. Third-Party Services -->
+    <div class="section">
+      <h2 class="section-title">5. Third-Party Services</h2>
+      <p>We rely on the following third-party services to operate Avyro.ai:</p>
+      <ul>
+        <li><strong>Anthropic (Claude API):</strong> Powers the AI coaching conversations. Your chat messages and relevant biometric context are sent to Anthropic to generate responses. Anthropic does not use your data to train their models.</li>
+        <li><strong>Supabase:</strong> Provides our database, user authentication, and real-time data synchronisation</li>
+        <li><strong>Sentry:</strong> Collects crash reports and device information (device model, OS version, error stack traces) to help us diagnose and fix bugs</li>
+        <li><strong>Expo Notifications:</strong> Delivers push notifications to your device when you have opted in</li>
+        <li><strong>Apple HealthKit (iOS):</strong> Provides read-only access to health data you have chosen to share</li>
+        <li><strong>Google Health Connect (Android):</strong> Provides read-only access to health data you have chosen to share</li>
+      </ul>
       <div class="highlight">
         <p>
-          AI coaching messages are processed by <strong>Anthropic</strong> (Claude API). Messages are sent to
-          Anthropic for generating responses but are <strong>not stored</strong> by Anthropic beyond the
-          duration of the API request. Anthropic does not use your data to train their models.
+          <strong>We do not sell your personal data to any third party.</strong> Data shared with
+          third-party services is strictly limited to what is necessary to provide the functionality
+          described above. We do not use any third-party advertising or behavioural tracking services.
         </p>
       </div>
     </div>
 
+    <!-- 6. Health Data -->
     <div class="section">
-      <h2 class="section-title">5. Third-Party Services</h2>
-      <p>We use the following third-party services to provide our app:</p>
+      <h2 class="section-title">6. Health Data</h2>
+      <p>
+        We treat your health data with the highest level of care. Health data accessed through
+        Apple HealthKit and Google Health Connect is subject to the following commitments:
+      </p>
       <ul>
-        <li><strong>Anthropic (Claude API):</strong> Powers the AI coaching conversations</li>
-        <li><strong>Supabase:</strong> Database, authentication, and real-time features</li>
-        <li><strong>Google Maps:</strong> Map display for group location features</li>
-        <li><strong>Apple HealthKit:</strong> Health data integration on iOS devices</li>
-        <li><strong>Google Health Connect:</strong> Health data integration on Android devices</li>
+        <li>Health data is accessed on a <strong>read-only</strong> basis. We do not write data back to HealthKit or Health Connect.</li>
+        <li>Health data is <strong>never sold, shared with, or disclosed to third parties</strong> for advertising, marketing, or data-brokering purposes</li>
+        <li>Health data is used <strong>solely</strong> to personalise your AI coaching experience, including readiness scoring, workout adaptation, and recovery recommendations</li>
+        <li>Biometric context (such as current HRV and sleep hours) may be included in prompts sent to the Anthropic API to generate relevant coaching advice. No raw health data exports are shared externally.</li>
+        <li>You can disconnect health data sources at any time from your device settings, and previously synced health data will be deleted from our servers upon account deletion</li>
+      </ul>
+      <div class="highlight">
+        <p>
+          We comply fully with Apple's HealthKit and Google's Health Connect usage policies.
+          Your health data is never used for purposes unrelated to providing you with
+          personalised fitness coaching within Avyro.ai.
+        </p>
+      </div>
+    </div>
+
+    <!-- 7. Your Rights (GDPR) -->
+    <div class="section">
+      <h2 class="section-title">7. Your Rights (GDPR)</h2>
+      <p>
+        Avyro.ai is operated from Norway, within the European Economic Area (EEA). Under the General
+        Data Protection Regulation (GDPR), you have the following rights:
+      </p>
+      <ul>
+        <li><strong>Right of access:</strong> You can request a copy of all personal data we hold about you</li>
+        <li><strong>Right to rectification:</strong> You can request correction of any inaccurate or incomplete personal data</li>
+        <li><strong>Right to erasure:</strong> You can request deletion of your account and all associated personal data (see Section 9 below)</li>
+        <li><strong>Right to data portability:</strong> You can request an export of your personal data in a structured, commonly used, machine-readable format</li>
+        <li><strong>Right to restrict processing:</strong> You can request that we limit how we process your data in certain circumstances</li>
+        <li><strong>Right to object:</strong> You can object to processing based on legitimate interests at any time</li>
+        <li><strong>Right to withdraw consent:</strong> Where processing is based on your consent, you may withdraw that consent at any time without affecting the lawfulness of prior processing</li>
+        <li><strong>Right to lodge a complaint:</strong> You have the right to file a complaint with the Norwegian Data Protection Authority (Datatilsynet) or another supervisory authority in your country of residence</li>
+      </ul>
+
+      <p><strong>Legal bases for processing</strong></p>
+      <p>We process your personal data under the following lawful bases:</p>
+      <ul>
+        <li><strong>Consent (Article 6(1)(a)):</strong> You provide explicit consent when creating your account, connecting health data sources, and enabling push notifications</li>
+        <li><strong>Contract performance (Article 6(1)(b)):</strong> Processing is necessary to deliver the AI coaching service you have signed up for</li>
+        <li><strong>Legitimate interests (Article 6(1)(f)):</strong> We process data as necessary to maintain service stability, prevent abuse, and improve the app, where these interests are not overridden by your rights</li>
+      </ul>
+
+      <p>
+        To exercise any of your rights, please contact us at
+        <a href="mailto:privacy@avyro.app">privacy@avyro.app</a>. We will respond to your request
+        within 30 days as required by GDPR.
+      </p>
+    </div>
+
+    <!-- 8. International Data Transfers -->
+    <div class="section">
+      <h2 class="section-title">8. International Data Transfers</h2>
+      <p>
+        Some of our third-party service providers (including Anthropic and Sentry) may process data
+        outside the European Economic Area. Where personal data is transferred outside the EEA,
+        we ensure that appropriate safeguards are in place, such as:
+      </p>
+      <ul>
+        <li>Standard Contractual Clauses (SCCs) approved by the European Commission</li>
+        <li>Adequacy decisions by the European Commission for the recipient country</li>
+        <li>Other legally recognised transfer mechanisms under GDPR</li>
       </ul>
       <p>
-        We do not sell your personal data to any third party. Data shared with third-party services
-        is limited to what is necessary to provide the described functionality.
+        You may request further details about the safeguards in place by contacting us at
+        <a href="mailto:privacy@avyro.app">privacy@avyro.app</a>.
       </p>
     </div>
 
+    <!-- 9. Data Retention -->
     <div class="section">
-      <h2 class="section-title">6. Data Retention</h2>
+      <h2 class="section-title">9. Data Retention</h2>
       <p>
-        Your personal data is retained for as long as your account is active. When you delete your
-        account, all associated data — including your profile, workout history, chat messages, and
-        health data — will be permanently deleted within 48 hours of the deletion request.
+        Your personal data is retained for as long as your account is active and necessary to provide
+        you with the Avyro.ai service. Specifically:
       </p>
-    </div>
-
-    <div class="section">
-      <h2 class="section-title">7. Your Rights</h2>
-      <p>You have the following rights regarding your personal data:</p>
       <ul>
-        <li><strong>Access:</strong> Request a copy of all personal data we hold about you</li>
-        <li><strong>Correction:</strong> Request correction of inaccurate or incomplete data</li>
-        <li><strong>Deletion:</strong> Request deletion of your account and all associated data</li>
-        <li><strong>Data export:</strong> Request an export of your data in a portable format</li>
-        <li><strong>Withdraw consent:</strong> Withdraw your consent for data processing at any time</li>
-        <li><strong>Restriction:</strong> Request restriction of processing in certain circumstances</li>
+        <li><strong>Account and profile data:</strong> Retained until you delete your account</li>
+        <li><strong>Workout history and health data:</strong> Retained until you delete your account</li>
+        <li><strong>Chat messages:</strong> Retained until you delete your account. Messages sent to the Anthropic API are not stored by Anthropic beyond the duration of the API request.</li>
+        <li><strong>Crash reports:</strong> Retained by Sentry for up to 90 days</li>
+        <li><strong>Analytics data:</strong> Stored in aggregated, anonymised form and retained indefinitely for service improvement</li>
       </ul>
       <p>
-        To exercise any of these rights, contact us at <a href="mailto:privacy@avyro.app">privacy@avyro.app</a>.
+        When you delete your account, all associated personal data — including your profile, workout
+        history, chat messages, and synced health data — is permanently deleted from our servers
+        within 30 days.
       </p>
     </div>
 
+    <!-- 10. Account Deletion -->
     <div class="section">
-      <h2 class="section-title">8. Account Deletion</h2>
+      <h2 class="section-title">10. Account Deletion</h2>
       <p>
-        You can request account deletion directly within the app via <strong>Settings &gt; Account &gt;
-        Delete Account</strong>. Upon confirmation, your account and all associated data will be
-        permanently deleted within 48 hours.
+        You can delete your account and all associated data directly within the app by navigating to
+        <strong>Settings &gt; Account &gt; Delete Account</strong>. Upon confirmation, your data
+        will be permanently and irreversibly removed from our systems within 30 days.
       </p>
       <p>
         Alternatively, you can request account deletion by emailing
-        <a href="mailto:privacy@avyro.app">privacy@avyro.app</a>.
+        <a href="mailto:privacy@avyro.app">privacy@avyro.app</a> from the email address associated
+        with your account.
       </p>
     </div>
 
+    <!-- 11. Children's Privacy -->
     <div class="section">
-      <h2 class="section-title">9. GDPR Compliance</h2>
+      <h2 class="section-title">11. Children's Privacy</h2>
       <p>
-        For users in the European Economic Area (EEA), we process your personal data under the following
-        lawful bases as defined by the General Data Protection Regulation (GDPR):
+        Avyro.ai is not intended for use by children under the age of 16. We do not knowingly
+        collect personal data from anyone under 16 years of age. If we become aware that we have
+        inadvertently collected personal data from a child under 16, we will take steps to delete
+        that data as promptly as possible.
       </p>
-      <ul>
-        <li><strong>Consent:</strong> You provide explicit consent when you create an account and connect health data sources</li>
-        <li><strong>Legitimate interest:</strong> We process data as necessary to improve and maintain the service, prevent fraud, and ensure security</li>
-        <li><strong>Contract performance:</strong> Processing is necessary to deliver the AI coaching service you have signed up for</li>
-      </ul>
       <p>
-        You may withdraw your consent at any time by deleting your account or contacting us at
-        <a href="mailto:privacy@avyro.app">privacy@avyro.app</a>.
+        If you believe a child under 16 has provided us with personal data, please contact us
+        immediately at <a href="mailto:privacy@avyro.app">privacy@avyro.app</a>.
       </p>
     </div>
 
+    <!-- 12. Changes to This Policy -->
     <div class="section">
-      <h2 class="section-title">10. Children's Privacy</h2>
+      <h2 class="section-title">12. Changes to This Policy</h2>
       <p>
-        Avyro.ai is not intended for use by children under the age of 16. We do not knowingly collect
-        personal data from children under 16. If you believe a child has provided us with personal data,
-        please contact us at <a href="mailto:privacy@avyro.app">privacy@avyro.app</a> and we will
-        promptly delete it.
+        We may update this Privacy Policy from time to time to reflect changes in our practices,
+        technology, legal requirements, or for other operational reasons. When we make material
+        changes, we will notify you via email or through an in-app notification before the changes
+        take effect.
+      </p>
+      <p>
+        We encourage you to review this policy periodically. The "Last updated" date at the top of
+        this page indicates when the policy was most recently revised. Continued use of the app
+        after changes take effect constitutes your acknowledgement of the updated policy.
       </p>
     </div>
 
+    <!-- 13. Contact -->
     <div class="section">
-      <h2 class="section-title">11. Changes to This Policy</h2>
+      <h2 class="section-title">13. Contact</h2>
       <p>
-        We may update this Privacy Policy from time to time. We will notify you of any significant
-        changes via email or an in-app notification. Continued use of the app after changes constitutes
-        acceptance of the updated policy.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2 class="section-title">12. Contact Us</h2>
-      <p>
-        If you have any questions about this Privacy Policy or how we handle your data, please contact us:
+        If you have any questions, concerns, or requests regarding this Privacy Policy or how we
+        handle your personal data, please contact us:
       </p>
       <ul>
         <li><strong>Email:</strong> <a href="mailto:privacy@avyro.app">privacy@avyro.app</a></li>
         <li><strong>Website:</strong> <a href="https://avyro.app">https://avyro.app</a></li>
       </ul>
+      <p>
+        If you are not satisfied with our response, you have the right to lodge a complaint with the
+        <strong>Norwegian Data Protection Authority (Datatilsynet)</strong> at
+        <a href="https://www.datatilsynet.no" target="_blank" rel="noopener noreferrer">www.datatilsynet.no</a>.
+      </p>
     </div>
 
     <div class="footer">
