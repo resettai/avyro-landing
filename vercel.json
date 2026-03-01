@@ -1,8 +1,3 @@
 {
-  "version": 2,
-  "name": "avyro-landing",
-  "rewrites": [
-    { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/((?!privacy).*)", "destination": "/index.html" }
-  ]
+  "cleanUrls": true
 }
