@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Avyro.ai</title>
+  <meta name="description" content="Avyro.ai Privacy Policy — how we collect, use, and protect your data." />
+  <meta property="og:title" content="Privacy Policy — Avyro.ai" />
+  <meta property="og:description" content="How Avyro.ai collects, uses, and protects your data." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://avyro.app/privacy" />
+  <meta name="theme-color" content="#07090F" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #07090F;
+      --surface: #0D1420;
+      --cyan: #00C8FF;
+      --mint: #00F0C8;
+      --pink: #FF3D8A;
+      --purple: #A855F7;
+      --gold: #FFB800;
+      --text: #FFFFFF;
+      --text-sec: rgba(255,255,255,0.55);
+      --text-dim: rgba(255,255,255,0.25);
+      --border: rgba(255,255,255,0.07);
+    }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background grid pattern */
+    .bg-pattern {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: -2;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 120px;
+      position: relative;
+    }
+
+    /* Header */
+    .header {
+      margin-bottom: 48px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      margin-bottom: 32px;
+      transition: opacity 0.2s;
+    }
+
+    .back-link:hover {
+      opacity: 0.8;
+    }
+
+    .logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 32px;
+      letter-spacing: 5px;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .logo-accent {
+      color: var(--mint);
+    }
+
+    .page-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 36px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .last-updated {
+      font-size: 13px;
+      color: var(--text-dim);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* Content sections */
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--cyan);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-sec);
+      margin-bottom: 12px;
+    }
+
+    .section ul {
+      list-style: none;
+      margin-bottom: 12px;
+    }
+
+    .section ul li {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-sec);
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+
+    .section ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--mint);
+    }
+
+    strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Highlight card */
+    .highlight {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+    }
+
+    .highlight p {
+      margin-bottom: 0;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 60px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 13px;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+    }
+
+    .footer .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 3px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .page { padding: 40px 18px 80px; }
+      .page-title { font-size: 28px; }
+      .section-title { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-pattern"></div>
+
+  <div class="page">
+    <div class="header">
+      <a href="/" class="back-link">&larr; Back to Avyro.ai</a>
+      <div class="logo">AVYRO<span class="logo-accent">.AI</span></div>
+      <h1 class="page-title">Privacy Policy</h1>
+      <p class="last-updated">Last updated: March 2026</p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">1. Introduction</h2>
+      <p>
+        Avyro.ai ("we", "our", "us") is an AI-powered fitness coaching application. We are committed
+        to protecting your privacy and handling your personal data responsibly. This Privacy Policy
+        explains what data we collect, how we use it, and your rights regarding that data.
+      </p>
+      <p>
+        By using Avyro.ai, you agree to the collection and use of information as described in this policy.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">2. Data We Collect</h2>
+      <p>We collect the following categories of personal data:</p>
+      <ul>
+        <li><strong>Account information:</strong> Name, email address</li>
+        <li><strong>Health and biometric data:</strong> Heart rate variability (HRV), sleep duration and quality, resting heart rate, daily step count, and recovery metrics — sourced from Apple HealthKit, Google Health Connect, Garmin, and Oura</li>
+        <li><strong>Workout data:</strong> Exercise logs, sets, reps, weights, session duration, and workout history</li>
+        <li><strong>Location data:</strong> Approximate location used for displaying nearby training groups on the map</li>
+        <li><strong>Chat messages:</strong> Conversations with the AI coach and messages sent in group chats</li>
+        <li><strong>Photos:</strong> Images you choose to share in group chats</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">3. How We Use Your Data</h2>
+      <p>Your data is used for the following purposes:</p>
+      <ul>
+        <li><strong>Personalised training:</strong> Your health and biometric data is used to generate and adapt your AI-coached training program in real time</li>
+        <li><strong>AI coaching:</strong> Chat messages and biometric context are sent to our AI provider to generate personalised coaching responses</li>
+        <li><strong>Group features:</strong> Your name, streak, and shared messages/photos are visible to members of groups you join</li>
+        <li><strong>Location features:</strong> Your approximate location is used to display nearby training groups on the map and to contextualise AI coaching advice</li>
+        <li><strong>Progress tracking:</strong> Workout logs and streak data are stored to show your training history and achievements</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">4. Data Storage and Security</h2>
+      <p>
+        Your data is stored securely using <strong>Supabase</strong> (hosted on AWS infrastructure). All data
+        is encrypted at rest and in transit using industry-standard TLS encryption.
+      </p>
+      <div class="highlight">
+        <p>
+          AI coaching messages are processed by <strong>Anthropic</strong> (Claude API). Messages are sent to
+          Anthropic for generating responses but are <strong>not stored</strong> by Anthropic beyond the
+          duration of the API request. Anthropic does not use your data to train their models.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">5. Third-Party Services</h2>
+      <p>We use the following third-party services to provide our app:</p>
+      <ul>
+        <li><strong>Anthropic (Claude API):</strong> Powers the AI coaching conversations</li>
+        <li><strong>Supabase:</strong> Database, authentication, and real-time features</li>
+        <li><strong>Google Maps:</strong> Map display for group location features</li>
+        <li><strong>Apple HealthKit:</strong> Health data integration on iOS devices</li>
+        <li><strong>Google Health Connect:</strong> Health data integration on Android devices</li>
+      </ul>
+      <p>
+        We do not sell your personal data to any third party. Data shared with third-party services
+        is limited to what is necessary to provide the described functionality.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">6. Data Retention</h2>
+      <p>
+        Your personal data is retained for as long as your account is active. When you delete your
+        account, all associated data — including your profile, workout history, chat messages, and
+        health data — will be permanently deleted within 48 hours of the deletion request.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">7. Your Rights</h2>
+      <p>You have the following rights regarding your personal data:</p>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of all personal data we hold about you</li>
+        <li><strong>Correction:</strong> Request correction of inaccurate or incomplete data</li>
+        <li><strong>Deletion:</strong> Request deletion of your account and all associated data</li>
+        <li><strong>Data export:</strong> Request an export of your data in a portable format</li>
+        <li><strong>Withdraw consent:</strong> Withdraw your consent for data processing at any time</li>
+        <li><strong>Restriction:</strong> Request restriction of processing in certain circumstances</li>
+      </ul>
+      <p>
+        To exercise any of these rights, contact us at <a href="mailto:privacy@avyro.app">privacy@avyro.app</a>.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">8. Account Deletion</h2>
+      <p>
+        You can request account deletion directly within the app via <strong>Settings &gt; Account &gt;
+        Delete Account</strong>. Upon confirmation, your account and all associated data will be
+        permanently deleted within 48 hours.
+      </p>
+      <p>
+        Alternatively, you can request account deletion by emailing
+        <a href="mailto:privacy@avyro.app">privacy@avyro.app</a>.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">9. GDPR Compliance</h2>
+      <p>
+        For users in the European Economic Area (EEA), we process your personal data under the following
+        lawful bases as defined by the General Data Protection Regulation (GDPR):
+      </p>
+      <ul>
+        <li><strong>Consent:</strong> You provide explicit consent when you create an account and connect health data sources</li>
+        <li><strong>Legitimate interest:</strong> We process data as necessary to improve and maintain the service, prevent fraud, and ensure security</li>
+        <li><strong>Contract performance:</strong> Processing is necessary to deliver the AI coaching service you have signed up for</li>
+      </ul>
+      <p>
+        You may withdraw your consent at any time by deleting your account or contacting us at
+        <a href="mailto:privacy@avyro.app">privacy@avyro.app</a>.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">10. Children's Privacy</h2>
+      <p>
+        Avyro.ai is not intended for use by children under the age of 16. We do not knowingly collect
+        personal data from children under 16. If you believe a child has provided us with personal data,
+        please contact us at <a href="mailto:privacy@avyro.app">privacy@avyro.app</a> and we will
+        promptly delete it.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">11. Changes to This Policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time. We will notify you of any significant
+        changes via email or an in-app notification. Continued use of the app after changes constitutes
+        acceptance of the updated policy.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">12. Contact Us</h2>
+      <p>
+        If you have any questions about this Privacy Policy or how we handle your data, please contact us:
+      </p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:privacy@avyro.app">privacy@avyro.app</a></li>
+        <li><strong>Website:</strong> <a href="https://avyro.app">https://avyro.app</a></li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <div class="footer-logo">AVYRO<span style="color: var(--mint);">.AI</span></div>
+      <p>Don't Think. Train.</p>
+    </div>
+  </div>
+</body>
+</html>

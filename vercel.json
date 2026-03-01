@@ -2,15 +2,11 @@
   "version": 2,
   "name": "avyro-landing",
   "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "privacy.html", "use": "@vercel/static" }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+    { "src": "/privacy", "dest": "/privacy.html" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
