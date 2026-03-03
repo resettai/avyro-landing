@@ -8,6 +8,7 @@ export default function middleware(request) {
     url.pathname.startsWith('/api/') ||
     url.pathname.startsWith('/_expo/') ||
     url.pathname.startsWith('/assets/') ||
+    url.pathname.startsWith('/fonts/') ||
     url.pathname === '/privacy' ||
     url.pathname === '/privacy/' ||
     url.pathname.startsWith('/privacy/') ||
@@ -39,5 +40,5 @@ export default function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/((?!_next|_expo|assets|favicon.ico).*)'],
+  matcher: ['/((?!_next|_expo|assets|fonts|favicon.ico).*)'],
 };
