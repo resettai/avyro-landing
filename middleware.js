@@ -1,15 +1,18 @@
 export default function middleware(request) {
   const url = new URL(request.url);
 
-  // Allow access to login page, API routes, and static assets
+  // Allow access to login page, API routes, static assets, and Expo build files
   if (
     url.pathname === '/login' ||
     url.pathname === '/login.html' ||
     url.pathname.startsWith('/api/') ||
+    url.pathname.startsWith('/_expo/') ||
+    url.pathname.startsWith('/assets/') ||
     url.pathname === '/privacy' ||
     url.pathname === '/privacy/' ||
     url.pathname.startsWith('/privacy/') ||
-    url.pathname === '/favicon.ico'
+    url.pathname === '/favicon.ico' ||
+    url.pathname === '/metadata.json'
   ) {
     return undefined;
   }
@@ -36,5 +39,5 @@ export default function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/((?!_next|favicon.ico).*)'],
+  matcher: ['/((?!_next|_expo|assets|favicon.ico).*)'],
 };
