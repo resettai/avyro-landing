@@ -18,10 +18,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
       --bg: #07090F;
       --surface: #0D1420;
+      --surface2: #121C2A;
       --cyan: #00C8FF;
       --mint: #00F0C8;
       --pink: #FF3D8A;
@@ -31,8 +31,8 @@
       --text-sec: rgba(255,255,255,0.55);
       --text-dim: rgba(255,255,255,0.25);
       --border: rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.13);
     }
-
     body {
       font-family: 'Barlow', sans-serif;
       background: var(--bg);
@@ -40,194 +40,617 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
-
-    .page {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      position: relative;
-    }
-
-    /* Animated rings */
-    .rings {
-      position: relative;
-      width: 240px;
-      height: 240px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .ring {
-      position: absolute;
-      border-radius: 50%;
-      border-style: solid;
-      border-width: 1.5px;
-      opacity: 0;
-      animation: ringExpand 3s ease-out infinite;
-    }
-
-    .ring-1 {
-      width: 200px; height: 200px;
-      border-color: var(--cyan);
-      animation-delay: 0s;
-    }
-    .ring-2 {
-      width: 150px; height: 150px;
-      border-color: var(--mint);
-      animation-delay: 0.4s;
-    }
-    .ring-3 {
-      width: 100px; height: 100px;
-      border-color: var(--purple);
-      animation-delay: 0.8s;
-    }
-
-    @keyframes ringExpand {
-      0% { opacity: 0.8; transform: scale(0.5); }
-      100% { opacity: 0; transform: scale(1.5); }
-    }
-
-    /* Glow behind rings */
-    .glow {
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,200,255,0.08) 0%, transparent 70%);
-      filter: blur(40px);
-      z-index: -1;
-    }
-
-    /* Text content */
-    .content {
-      text-align: center;
-      margin-top: 48px;
-      animation: fadeUp 1s ease 0.6s both;
-    }
-
-    .logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 56px;
-      letter-spacing: 8px;
-      color: var(--text);
-      line-height: 1;
-    }
-
-    .logo-accent {
-      color: var(--mint);
-    }
-
-    .subtitle {
-      font-family: 'Barlow', sans-serif;
-      font-weight: 800;
-      font-size: 10px;
-      color: var(--text-dim);
-      margin-top: 12px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-    }
-
-    .slogan {
-      font-family: 'Barlow', sans-serif;
-      font-weight: 500;
-      font-size: 16px;
-      color: var(--text-sec);
-      margin-top: 20px;
-      letter-spacing: 1.5px;
-    }
-
-    .slogan-accent {
-      color: var(--mint);
-    }
-
-    /* Coming soon badge */
-    .coming-soon {
-      margin-top: 48px;
-      animation: fadeUp 1s ease 1s both;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 28px;
-      border-radius: 40px;
-      background: linear-gradient(135deg, rgba(0,240,200,0.08), rgba(0,200,255,0.08));
-      border: 1px solid rgba(0,200,255,0.2);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 14px;
-      letter-spacing: 3px;
-      color: var(--cyan);
-      text-transform: uppercase;
-    }
-
-    .badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--mint);
-      animation: pulse 2s ease infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.3); }
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Responsive */
-    @media (max-width: 480px) {
-      .logo { font-size: 40px; letter-spacing: 5px; }
-      .slogan { font-size: 14px; }
-    }
-
-    /* Background grid pattern */
     .bg-pattern {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background-image:
         linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
       background-size: 60px 60px;
       z-index: -2;
     }
+    /* Page layout */
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 32px 20px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+      animation: fadeUp 0.8s ease both;
+    }
+    .logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 32px; letter-spacing: 6px; }
+    .logo-accent { color: var(--mint); }
+    .header-sub { font-weight: 800; font-size: 9px; color: var(--text-dim); margin-top: 6px; letter-spacing: 3px; text-transform: uppercase; }
+
+    /* Phone frame */
+    .phone-frame {
+      width: 375px;
+      height: 812px;
+      background: var(--bg);
+      border-radius: 44px;
+      border: 3px solid rgba(255,255,255,0.12);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 80px rgba(0,200,255,0.08), 0 0 200px rgba(0,200,255,0.04), 0 20px 60px rgba(0,0,0,0.5);
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+    /* Notch */
+    .notch {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 150px; height: 34px; background: #000; border-radius: 0 0 20px 20px; z-index: 100;
+    }
+    .notch-camera { position: absolute; top: 10px; right: 30px; width: 10px; height: 10px; border-radius: 50%; background: #1a1a2e; border: 1px solid #2a2a3e; }
+    /* Status bar */
+    .status-bar {
+      height: 54px; display: flex; align-items: flex-end; justify-content: space-between; padding: 0 28px 8px;
+      font-size: 12px; font-weight: 600; position: relative; z-index: 50;
+    }
+    .status-time { font-weight: 700; }
+    .status-icons { display: flex; gap: 5px; font-size: 11px; }
+
+    /* Screen container */
+    .screen-container {
+      position: absolute; top: 54px; left: 0; right: 0; bottom: 82px;
+      overflow-y: auto; overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+    .screen-container::-webkit-scrollbar { display: none; }
+    .screen { display: none; padding: 0 18px 20px; animation: screenFade 0.3s ease; }
+    .screen.active { display: block; }
+    @keyframes screenFade { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+
+    /* Tab bar */
+    .tab-bar {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 82px;
+      background: rgba(7,9,15,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      display: flex; justify-content: space-around; align-items: flex-start; padding-top: 2px;
+      border-top: 1px solid var(--border);
+      z-index: 50;
+    }
+    .tab-bar::before {
+      content: ''; position: absolute; top: 0; left: var(--indicator-left, 0); width: 20%;
+      height: 2px; background: linear-gradient(90deg, var(--mint), var(--cyan));
+      transition: left 0.3s ease; border-radius: 0 0 2px 2px;
+    }
+    .tab-item {
+      display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 10px 0;
+      cursor: pointer; opacity: 0.4; transition: opacity 0.2s; user-select: none; width: 20%;
+    }
+    .tab-item.active { opacity: 1; }
+    .tab-item.active .tab-icon { color: var(--cyan); }
+    .tab-item.active .tab-label { color: var(--cyan); }
+    .tab-icon { font-size: 22px; line-height: 1; }
+    .tab-label { font-size: 9px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* ========== TODAY SCREEN ========== */
+    .today-greeting { font-size: 14px; color: var(--text-sec); margin-top: 8px; }
+    .today-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 28px; margin-top: 2px; }
+
+    /* Readiness ring */
+    .readiness-container { display: flex; flex-direction: column; align-items: center; margin: 24px 0; }
+    .readiness-ring { position: relative; width: 180px; height: 180px; }
+    .readiness-ring svg { width: 180px; height: 180px; transform: rotate(-90deg); }
+    .readiness-ring .ring-bg { fill: none; stroke: var(--border); stroke-width: 8; }
+    .readiness-ring .ring-progress { fill: none; stroke: url(#mintGrad); stroke-width: 8; stroke-linecap: round; stroke-dasharray: 502; stroke-dashoffset: 502; transition: stroke-dashoffset 1.5s ease; }
+    .readiness-value {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;
+    }
+    .readiness-number { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 56px; line-height: 1; }
+    .readiness-label { font-weight: 800; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-top: 2px; }
+
+    /* Bio stats */
+    .bio-stats { display: flex; justify-content: center; gap: 24px; margin: 4px 0 20px; }
+    .bio-stat { text-align: center; }
+    .bio-val { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; }
+    .bio-label { font-size: 9px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dim); margin-top: 2px; }
+
+    /* Cards */
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 16px; margin-bottom: 12px;
+    }
+    .card-accent {
+      background: linear-gradient(135deg, rgba(0,240,200,0.06), rgba(0,200,255,0.04));
+      border-color: rgba(0,240,200,0.16); position: relative; overflow: hidden;
+    }
+    .card-accent::before { content:''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--mint), var(--cyan)); }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18px; }
+    .section-label { font-weight: 800; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; }
+
+    /* AI message card */
+    .ai-msg { font-size: 13px; line-height: 1.5; color: var(--text-sec); }
+    .ai-msg-icon { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+    .ai-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--purple); }
+    .ai-name { font-weight: 800; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--purple); }
+
+    /* Session card */
+    .session-type { font-size: 12px; color: var(--pink); font-weight: 700; margin-bottom: 2px; }
+    .session-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; }
+    .session-meta { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+    .start-btn {
+      margin-top: 12px; width: 100%; height: 44px; border: none; border-radius: 12px;
+      background: linear-gradient(135deg, var(--mint), var(--cyan));
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 14px;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--bg); cursor: pointer;
+    }
+
+    /* Streak */
+    .streak-row { display: flex; align-items: center; gap: 12px; }
+    .streak-fire { font-size: 32px; animation: fireWobble 2s ease infinite; }
+    @keyframes fireWobble { 0%,100% { transform: scale(1) rotate(0); } 50% { transform: scale(1.12) rotate(3deg); } }
+    .streak-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 40px; }
+    .streak-txt { font-size: 11px; color: var(--text-sec); }
+
+    /* Week grid */
+    .week-grid { display: flex; gap: 6px; margin-top: 12px; }
+    .week-day {
+      flex: 1; height: 36px; border-radius: 8px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; font-size: 9px; font-weight: 800;
+      letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .week-day.done { background: rgba(0,240,200,0.12); color: var(--mint); }
+    .week-day.today-mark { background: rgba(0,200,255,0.15); color: var(--cyan); border: 1px solid rgba(0,200,255,0.3); }
+    .week-day.future { background: rgba(255,255,255,0.03); color: var(--text-dim); }
+    .week-dot { width: 4px; height: 4px; border-radius: 50%; margin-top: 2px; }
+    .week-day.done .week-dot { background: var(--mint); }
+    .week-day.today-mark .week-dot { background: var(--cyan); }
+
+    /* ========== WORKOUT SCREEN ========== */
+    .exercise-row {
+      display: flex; align-items: center; padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .exercise-row:last-child { border-bottom: none; }
+    .exercise-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; color: var(--text-dim); width: 28px; }
+    .exercise-info { flex: 1; }
+    .exercise-name { font-weight: 600; font-size: 14px; }
+    .exercise-sets { font-size: 12px; color: var(--text-sec); margin-top: 2px; }
+    .exercise-yt {
+      width: 32px; height: 32px; border-radius: 8px; background: rgba(255,0,0,0.12);
+      display: flex; align-items: center; justify-content: center; color: #FF0000;
+      font-size: 14px; cursor: pointer; transition: background 0.2s;
+    }
+    .exercise-yt:hover { background: rgba(255,0,0,0.2); }
+
+    /* Active exercise */
+    .active-exercise {
+      background: linear-gradient(135deg, rgba(255,61,138,0.08), rgba(168,85,247,0.06));
+      border: 1px solid rgba(255,61,138,0.2); border-radius: 16px; padding: 20px; margin-bottom: 16px;
+      position: relative; overflow: hidden;
+    }
+    .active-exercise::before { content:''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--pink), var(--purple)); }
+    .active-label { font-weight: 800; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--pink); margin-bottom: 6px; }
+    .active-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 24px; }
+    .active-detail { font-size: 13px; color: var(--text-sec); margin-top: 4px; }
+    .set-grid { display: flex; gap: 8px; margin-top: 14px; }
+    .set-bubble {
+      width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16px;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border2); cursor: pointer;
+    }
+    .set-bubble.done-set { background: rgba(0,240,200,0.15); border-color: rgba(0,240,200,0.3); color: var(--mint); }
+    .set-bubble.current-set { background: rgba(0,200,255,0.15); border-color: var(--cyan); color: var(--cyan); }
+
+    /* Rest timer */
+    .rest-timer {
+      text-align: center; margin-top: 16px; padding: 16px;
+      background: rgba(0,200,255,0.06); border-radius: 12px;
+    }
+    .rest-label { font-weight: 800; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); }
+    .rest-time { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 40px; color: var(--cyan); animation: timerPulse 1s ease infinite; }
+    @keyframes timerPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+
+    /* ========== COACH SCREEN ========== */
+    .chat-area { padding-bottom: 70px; }
+    .chat-bubble {
+      max-width: 85%; padding: 12px 15px; margin-bottom: 10px;
+      font-size: 14px; line-height: 1.5;
+    }
+    .chat-ai {
+      background: var(--surface); border: 1px solid var(--border2);
+      border-radius: 4px 16px 16px 16px; align-self: flex-start;
+      color: var(--text-sec);
+    }
+    .chat-user {
+      background: linear-gradient(135deg, rgba(0,200,255,0.14), rgba(168,85,247,0.08));
+      border-radius: 16px 4px 16px 16px; margin-left: auto;
+    }
+    .chat-time { font-size: 10px; color: var(--text-dim); margin-top: 4px; }
+    .chat-input-bar {
+      position: absolute; bottom: 82px; left: 0; right: 0; padding: 10px 18px;
+      background: rgba(7,9,15,0.95); backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border); display: flex; gap: 10px; align-items: center;
+    }
+    .chat-input {
+      flex: 1; height: 40px; border-radius: 20px; border: 1px solid var(--border2);
+      background: var(--surface2); padding: 0 16px; color: var(--text);
+      font-family: 'Barlow', sans-serif; font-size: 14px; outline: none;
+    }
+    .chat-send {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--mint), var(--cyan));
+      border: none; color: var(--bg); font-size: 16px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .mode-toggles { display: flex; gap: 8px; margin-bottom: 16px; }
+    .mode-btn {
+      padding: 8px 14px; border-radius: 20px; border: 1px solid var(--border2);
+      background: rgba(255,255,255,0.03); font-size: 12px; font-weight: 700;
+      color: var(--text-sec); cursor: pointer; transition: all 0.2s;
+    }
+    .mode-btn:hover { background: rgba(255,255,255,0.06); }
+
+    /* ========== SOCIAL SCREEN ========== */
+    .social-tabs { display: flex; gap: 0; margin-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .social-tab {
+      padding: 10px 16px; font-weight: 800; font-size: 11px; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--text-dim); cursor: pointer;
+      border-bottom: 2px solid transparent; transition: all 0.2s;
+    }
+    .social-tab.active { color: var(--cyan); border-bottom-color: var(--cyan); }
+    .family-member {
+      display: flex; align-items: center; gap: 12px; padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .family-member:last-child { border-bottom: none; }
+    .member-avatar {
+      width: 42px; height: 42px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 16px;
+    }
+    .member-info { flex: 1; }
+    .member-name { font-weight: 700; font-size: 14px; }
+    .member-note { font-size: 12px; color: var(--text-sec); margin-top: 2px; }
+    .member-streak { text-align: right; }
+    .member-streak-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; }
+    .member-streak-label { font-size: 9px; color: var(--text-dim); font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+    .puff-btn {
+      padding: 6px 12px; border-radius: 16px; border: 1px solid rgba(255,184,0,0.3);
+      background: rgba(255,184,0,0.1); font-size: 11px; font-weight: 800;
+      color: var(--gold); cursor: pointer;
+    }
+
+    /* ========== PROFILE SCREEN ========== */
+    .profile-hero { text-align: center; padding: 20px 0; }
+    .profile-fire { font-size: 56px; animation: fireWobble 2s ease infinite; }
+    .profile-streak { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 72px; line-height: 1; }
+    .profile-streak-label { font-weight: 800; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+    .rewards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+    .reward-item {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+      padding: 16px 10px; text-align: center;
+    }
+    .reward-item.unlocked { border-color: rgba(0,240,200,0.2); background: linear-gradient(135deg, rgba(0,240,200,0.06), rgba(0,200,255,0.04)); }
+    .reward-icon { font-size: 28px; }
+    .reward-name { font-size: 10px; font-weight: 800; letter-spacing: 0.5px; margin-top: 6px; color: var(--text-sec); text-transform: uppercase; }
+    .special-mode {
+      display: flex; align-items: center; gap: 12px; padding: 14px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 10px;
+    }
+    .special-icon { font-size: 24px; }
+    .special-info { flex: 1; }
+    .special-title { font-weight: 700; font-size: 14px; }
+    .special-desc { font-size: 12px; color: var(--text-sec); margin-top: 2px; }
+
+    /* Tag */
+    .tag {
+      display: inline-flex; height: 22px; padding: 0 9px; border-radius: 20px;
+      align-items: center; font-size: 9px; font-weight: 800; letter-spacing: 0.8px; text-transform: uppercase;
+    }
+    .tag-mint { background: rgba(0,240,200,0.12); color: var(--mint); }
+    .tag-pink { background: rgba(255,61,138,0.12); color: var(--pink); }
+    .tag-cyan { background: rgba(0,200,255,0.12); color: var(--cyan); }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 32px; text-align: center; animation: fadeUp 0.8s ease 0.4s both;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 24px; border-radius: 40px;
+      background: linear-gradient(135deg, rgba(0,240,200,0.08), rgba(0,200,255,0.08));
+      border: 1px solid rgba(0,200,255,0.2);
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 12px;
+      letter-spacing: 3px; color: var(--cyan); text-transform: uppercase;
+    }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); animation: pulse 2s ease infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .footer-text { font-size: 12px; color: var(--text-dim); margin-top: 16px; }
+
+    /* Responsive */
+    @media (max-width: 420px) {
+      .phone-frame { width: 100%; height: calc(100vh - 120px); border-radius: 0; border-left: none; border-right: none; }
+      .page-wrapper { padding: 16px 0; }
+      .header { margin-bottom: 16px; }
+      .page-footer { display: none; }
+    }
   </style>
 </head>
 <body>
   <div class="bg-pattern"></div>
-
-  <div class="page">
-    <!-- Animated rings (loading screen) -->
-    <div class="rings">
-      <div class="glow"></div>
-      <div class="ring ring-1"></div>
-      <div class="ring ring-2"></div>
-      <div class="ring ring-3"></div>
-    </div>
-
-    <!-- Logo + Slogan -->
-    <div class="content">
+  <div class="page-wrapper">
+    <div class="header">
       <h1 class="logo">AVYRO<span class="logo-accent">.AI</span></h1>
-      <p class="subtitle">AI Performance Coach</p>
-      <p class="slogan">Don't Think. <span class="slogan-accent">Train.</span></p>
+      <p class="header-sub">Interactive Preview</p>
     </div>
 
-    <!-- Coming Soon badge -->
-    <div class="coming-soon">
-      <div class="badge">
-        <span class="badge-dot"></span>
-        Coming Soon
+    <!-- Phone Frame -->
+    <div class="phone-frame">
+      <div class="notch"><div class="notch-camera"></div></div>
+      <div class="status-bar">
+        <span class="status-time">09:41</span>
+        <span class="status-icons">&#9679;&#9679;&#9679;&#9679; WiFi 100%</span>
+      </div>
+
+      <!-- Screens -->
+      <div class="screen-container">
+        <!-- TODAY -->
+        <div class="screen active" id="screen-today">
+          <p class="today-greeting">Good morning, Leif</p>
+          <h2 class="today-title">Today</h2>
+
+          <div class="readiness-container">
+            <div class="readiness-ring">
+              <svg viewBox="0 0 180 180">
+                <defs><linearGradient id="mintGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00F0C8"/><stop offset="100%" stop-color="#00C8FF"/></linearGradient></defs>
+                <circle cx="90" cy="90" r="80" class="ring-bg"/>
+                <circle cx="90" cy="90" r="80" class="ring-progress" id="readinessRing"/>
+              </svg>
+              <div class="readiness-value">
+                <div class="readiness-number">87</div>
+                <div class="readiness-label">Readiness</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bio-stats">
+            <div class="bio-stat"><div class="bio-val" style="color:var(--mint)">68</div><div class="bio-label">HRV</div></div>
+            <div class="bio-stat"><div class="bio-val" style="color:var(--cyan)">7.4h</div><div class="bio-label">Sleep</div></div>
+            <div class="bio-stat"><div class="bio-val" style="color:var(--purple)">52</div><div class="bio-label">RHR</div></div>
+          </div>
+
+          <div class="card card-accent">
+            <div class="ai-msg-icon"><div class="ai-dot"></div><span class="ai-name">Avyro Coach</span></div>
+            <p class="ai-msg">Recovery's solid at 87. HRV trending up nicely this week. You're more than ready to hit upper body hard today. Let's make it count.</p>
+          </div>
+
+          <div class="section-label">Today's Session</div>
+          <div class="card" style="cursor:pointer" onclick="switchTab(1)">
+            <div class="session-type">STRENGTH</div>
+            <div class="card-header">
+              <div class="session-title">Upper Body Hypertrophy</div>
+              <span class="tag tag-pink">8 exercises</span>
+            </div>
+            <div class="session-meta">~55 min &middot; Gym &middot; 4 compound + 4 isolation</div>
+            <button class="start-btn" onclick="event.stopPropagation();switchTab(1)">START SESSION</button>
+          </div>
+
+          <div class="section-label">Streak</div>
+          <div class="card">
+            <div class="streak-row">
+              <span class="streak-fire">🔥</span>
+              <div><div class="streak-num" style="color:var(--gold)">18</div><div class="streak-txt">days in a row</div></div>
+            </div>
+            <div class="week-grid">
+              <div class="week-day done"><span>Mon</span><span class="week-dot"></span></div>
+              <div class="week-day done"><span>Tue</span><span class="week-dot"></span></div>
+              <div class="week-day done"><span>Wed</span><span class="week-dot"></span></div>
+              <div class="week-day today-mark"><span>Thu</span><span class="week-dot"></span></div>
+              <div class="week-day future"><span>Fri</span></div>
+              <div class="week-day future"><span>Sat</span></div>
+              <div class="week-day future"><span>Sun</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WORKOUT -->
+        <div class="screen" id="screen-workout">
+          <p class="section-label" style="margin-top:8px">Current Exercise</p>
+          <div class="active-exercise">
+            <div class="active-label">Exercise 1 of 8</div>
+            <div class="active-name">Incline Dumbbell Press</div>
+            <div class="active-detail">4 sets &times; 8 reps &middot; 30kg</div>
+            <div class="set-grid">
+              <div class="set-bubble done-set">1</div>
+              <div class="set-bubble done-set">2</div>
+              <div class="set-bubble current-set">3</div>
+              <div class="set-bubble">4</div>
+            </div>
+          </div>
+
+          <div class="rest-timer">
+            <div class="rest-label">Rest Timer</div>
+            <div class="rest-time" id="restTimer">1:32</div>
+          </div>
+
+          <div class="section-label" style="margin-top:20px">Exercises</div>
+          <div class="card">
+            <div class="exercise-row"><span class="exercise-num">1</span><div class="exercise-info"><div class="exercise-name">Incline Dumbbell Press</div><div class="exercise-sets">4 &times; 8</div></div><div class="exercise-yt">&#9654;</div></div>
+            <div class="exercise-row"><span class="exercise-num">2</span><div class="exercise-info"><div class="exercise-name">Barbell Bench Press</div><div class="exercise-sets">4 &times; 6-8</div></div><div class="exercise-yt">&#9654;</div></div>
+            <div class="exercise-row"><span class="exercise-num">3</span><div class="exercise-info"><div class="exercise-name">Barbell Row</div><div class="exercise-sets">4 &times; 6-8</div></div><div class="exercise-yt">&#9654;</div></div>
+            <div class="exercise-row"><span class="exercise-num">4</span><div class="exercise-info"><div class="exercise-name">Overhead Press</div><div class="exercise-sets">3 &times; 8-10</div></div><div class="exercise-yt">&#9654;</div></div>
+            <div class="exercise-row"><span class="exercise-num">5</span><div class="exercise-info"><div class="exercise-name">Pull-ups</div><div class="exercise-sets">3 &times; max</div></div><div class="exercise-yt">&#9654;</div></div>
+            <div class="exercise-row"><span class="exercise-num">6</span><div class="exercise-info"><div class="exercise-name">Lateral Raises</div><div class="exercise-sets">3 &times; 12</div></div><div class="exercise-yt">&#9654;</div></div>
+            <div class="exercise-row"><span class="exercise-num">7</span><div class="exercise-info"><div class="exercise-name">Face Pulls</div><div class="exercise-sets">3 &times; 15</div></div><div class="exercise-yt">&#9654;</div></div>
+            <div class="exercise-row"><span class="exercise-num">8</span><div class="exercise-info"><div class="exercise-name">Tricep Pushdown</div><div class="exercise-sets">3 &times; 12</div></div><div class="exercise-yt">&#9654;</div></div>
+          </div>
+        </div>
+
+        <!-- COACH -->
+        <div class="screen" id="screen-coach">
+          <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:24px;margin:8px 0 12px">Coach</h2>
+          <div class="mode-toggles">
+            <span class="mode-btn">&#9992; Travel Mode</span>
+            <span class="mode-btn">&#129298; Sickness Mode</span>
+          </div>
+          <div class="chat-area">
+            <div class="chat-bubble chat-ai">
+              <p>Morning Leif. 87 readiness, HRV's at 68 — you're in solid shape today. Upper body hypertrophy is loaded and ready. Anything you want to adjust before we go?</p>
+              <div class="chat-time">09:32</div>
+            </div>
+            <div class="chat-bubble chat-user">
+              <p>Feeling good today! Shoulder is a bit tight from yesterday though. Should I modify anything?</p>
+              <div class="chat-time">09:33</div>
+            </div>
+            <div class="chat-bubble chat-ai">
+              <p>Smart to flag that. Drop the overhead press to 3&times;6 at lighter weight and swap lateral raises for cable lateral raises — less impingement risk. Keep incline press but start lighter for 2 warm-up sets. Everything else stays.</p>
+              <div class="chat-time">09:33</div>
+            </div>
+            <div class="chat-bubble chat-user">
+              <p>Perfect, let's go!</p>
+              <div class="chat-time">09:34</div>
+            </div>
+            <div class="chat-bubble chat-ai">
+              <p>That's the spirit. Programme's updated. Smash it. 💪</p>
+              <div class="chat-time">09:34</div>
+            </div>
+          </div>
+          <div class="chat-input-bar">
+            <input class="chat-input" placeholder="Ask your coach..." disabled />
+            <button class="chat-send">&#8593;</button>
+          </div>
+        </div>
+
+        <!-- SOCIAL -->
+        <div class="screen" id="screen-social">
+          <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:24px;margin:8px 0 4px">Social</h2>
+          <div class="social-tabs">
+            <span class="social-tab active">Familie</span>
+            <span class="social-tab">Oslo Lifters</span>
+            <span class="social-tab">Discover</span>
+          </div>
+          <div class="section-label">Familie S&oslash;rensen</div>
+          <div class="card">
+            <div class="family-member">
+              <div class="member-avatar" style="background:rgba(255,61,138,0.15);color:var(--pink)">I</div>
+              <div class="member-info"><div class="member-name">Ida</div><div class="member-note">Leading. Hip thrust PR 90kg 🏆</div></div>
+              <div class="member-streak"><div class="member-streak-num" style="color:var(--pink)">24</div><div class="member-streak-label">streak</div></div>
+            </div>
+            <div class="family-member">
+              <div class="member-avatar" style="background:rgba(0,240,200,0.15);color:var(--mint)">L</div>
+              <div class="member-info"><div class="member-name">Leif <span class="tag tag-cyan" style="margin-left:4px;font-size:8px">You</span></div><div class="member-note">Upper body hypertrophy today</div></div>
+              <div class="member-streak"><div class="member-streak-num" style="color:var(--gold)">18</div><div class="member-streak-label">streak</div></div>
+            </div>
+            <div class="family-member">
+              <div class="member-avatar" style="background:rgba(0,200,255,0.15);color:var(--cyan)">In</div>
+              <div class="member-info"><div class="member-name">Ingrid</div><div class="member-note">4 sessions this week</div></div>
+              <div class="member-streak"><div class="member-streak-num" style="color:var(--cyan)">12</div><div class="member-streak-label">streak</div></div>
+            </div>
+            <div class="family-member">
+              <div class="member-avatar" style="background:rgba(255,184,0,0.15);color:var(--gold)">A</div>
+              <div class="member-info"><div class="member-name">Anna</div><div class="member-note">Ran 5.2km yesterday</div></div>
+              <div class="member-streak"><div class="member-streak-num" style="color:var(--gold)">7</div><div class="member-streak-label">streak</div></div>
+            </div>
+            <div class="family-member">
+              <div class="member-avatar" style="background:rgba(0,240,200,0.15);color:var(--mint)">S</div>
+              <div class="member-info"><div class="member-name">Synnøve</div><div class="member-note">Just started! 🌟</div></div>
+              <div class="member-streak"><div class="member-streak-num" style="color:var(--mint)">3</div><div class="member-streak-label">streak</div></div>
+            </div>
+            <div class="family-member">
+              <div class="member-avatar" style="background:rgba(255,255,255,0.06);color:var(--text-dim)">LM</div>
+              <div class="member-info"><div class="member-name">Leif Martin</div><div class="member-note" style="color:var(--text-dim)">No activity yet</div></div>
+              <div class="member-streak"><button class="puff-btn">💨 Puff!</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROFILE / STREAK -->
+        <div class="screen" id="screen-profile">
+          <div class="profile-hero">
+            <div class="profile-fire">🔥</div>
+            <div class="profile-streak" style="color:var(--gold)">18</div>
+            <div class="profile-streak-label">Day Streak</div>
+          </div>
+
+          <div class="section-label">Rewards</div>
+          <div class="rewards-grid">
+            <div class="reward-item unlocked"><div class="reward-icon">🔥</div><div class="reward-name">7 Days</div></div>
+            <div class="reward-item unlocked"><div class="reward-icon">⚡</div><div class="reward-name">14 Days</div></div>
+            <div class="reward-item unlocked"><div class="reward-icon">💎</div><div class="reward-name">First PR</div></div>
+            <div class="reward-item"><div class="reward-icon" style="opacity:0.3">🏆</div><div class="reward-name" style="color:var(--text-dim)">30 Days</div></div>
+            <div class="reward-item"><div class="reward-icon" style="opacity:0.3">👑</div><div class="reward-name" style="color:var(--text-dim)">60 Days</div></div>
+            <div class="reward-item"><div class="reward-icon" style="opacity:0.3">🌟</div><div class="reward-name" style="color:var(--text-dim)">100 Days</div></div>
+          </div>
+
+          <div class="section-label" style="margin-top:20px">Special Modes</div>
+          <div class="special-mode">
+            <span class="special-icon">&#9992;&#65039;</span>
+            <div class="special-info"><div class="special-title">Travel Mode</div><div class="special-desc">Bodyweight workouts for on the go</div></div>
+            <span class="tag tag-cyan">Off</span>
+          </div>
+          <div class="special-mode">
+            <span class="special-icon">&#129298;</span>
+            <div class="special-info"><div class="special-title">Sickness Mode</div><div class="special-desc">Freeze streak, pause programme</div></div>
+            <span class="tag tag-cyan">Off</span>
+          </div>
+          <div class="special-mode">
+            <span class="special-icon">&#128564;</span>
+            <div class="special-info"><div class="special-title">Burnout Mode</div><div class="special-desc">Minimum effective dose training</div></div>
+            <span class="tag tag-cyan">Off</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Bar -->
+      <div class="tab-bar" id="tabBar">
+        <div class="tab-item active" onclick="switchTab(0)"><span class="tab-icon">&#127968;</span><span class="tab-label">Today</span></div>
+        <div class="tab-item" onclick="switchTab(1)"><span class="tab-icon">&#127947;</span><span class="tab-label">Workout</span></div>
+        <div class="tab-item" onclick="switchTab(2)"><span class="tab-icon">&#9889;</span><span class="tab-label">Coach</span></div>
+        <div class="tab-item" onclick="switchTab(3)"><span class="tab-icon">&#128101;</span><span class="tab-label">Social</span></div>
+        <div class="tab-item" onclick="switchTab(4)"><span class="tab-icon">&#128293;</span><span class="tab-label">Streak</span></div>
       </div>
     </div>
+
+    <div class="page-footer">
+      <div class="badge"><span class="badge-dot"></span>Interactive Preview</div>
+      <p class="footer-text">Avyro.ai &mdash; Don't Think. Train.</p>
+    </div>
   </div>
+
+  <script>
+    // Tab switching
+    const screens = ['screen-today','screen-workout','screen-coach','screen-social','screen-profile'];
+    const tabs = document.querySelectorAll('.tab-item');
+    const tabBar = document.getElementById('tabBar');
+
+    function switchTab(idx) {
+      screens.forEach((id,i) => {
+        const el = document.getElementById(id);
+        el.classList.toggle('active', i === idx);
+      });
+      tabs.forEach((t,i) => t.classList.toggle('active', i === idx));
+      tabBar.style.setProperty('--indicator-left', (idx * 20) + '%');
+      document.querySelector('.screen-container').scrollTop = 0;
+    }
+
+    // Animate readiness ring on load
+    setTimeout(() => {
+      const ring = document.getElementById('readinessRing');
+      const pct = 87 / 100;
+      ring.style.strokeDashoffset = 502 - (502 * pct);
+    }, 500);
+
+    // Rest timer countdown
+    let restSeconds = 92;
+    setInterval(() => {
+      restSeconds--;
+      if (restSeconds < 0) restSeconds = 120;
+      const m = Math.floor(restSeconds / 60);
+      const s = restSeconds % 60;
+      document.getElementById('restTimer').textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    }, 1000);
+
+    // Social tab switching
+    document.querySelectorAll('.social-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.social-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
